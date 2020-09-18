@@ -1,0 +1,45 @@
+{
+"zones" : [
+        {
+            "name": "Tunis",
+            "Gouvernorat": "Gouvernorat de Tunis",
+            "cord": [10.165863, 36.79745]
+         }
+         ,
+         {
+            "name": "Sfax",
+            "Gouvernorat": "Gouvernorat de Sfax",
+            "cord": [10.76, 34.74]
+          },
+          {
+            "name": "Sousse",
+            "Gouvernorat": "Gouvernorat de Sousse",
+            "cord": [10.64, 35.826]
+          },
+          {
+            "name": "Kairouan",
+            "Gouvernorat": "Gouvernorat de Kairouan",
+            "cord": [10.09, 35.67]
+          },
+          {
+            "name": "Bizerte",
+            "Gouvernorat": "Gouvernorat de Bizerte",
+            "cord": [9.87, 37.27]
+          },
+          {
+            "name": "Gabs",
+            "Gouvernorat": "Gouvernorat de Gabs",
+            "cord": [10.11, 33.89]
+          },
+          {
+            "name": "La Soukra",
+            "Gouvernorat": "Gouvernorat de l'Ariana",
+            "cord": [10.243807, 36.867433]
+          },
+          {
+            "name": "Ariana",
+            "Gouvernorat": "Gouvernorat de l'Ariana",
+            "cord": [10.2, 36.85]
+          }
+    ]
+ }
