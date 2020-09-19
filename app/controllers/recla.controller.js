@@ -1,10 +1,67 @@
-const db = require("../models")
-const Recla = db.recla;
-const decode = require("jwt-decode");
-const Product = db.product;
-const authController = require("../controllers/auth.controller")
+const express = require("express");
+const app = express();
+const mongoose = require("mongoose");
+const Recla = require("../models/recla.model")
+const webpush = require("web-push");
+app.use(express.json());
 
-const staticToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNWZiOGRkZWQxN2MzMDkzYmIyNWU2NSIsInVzZXJuYW1lIjoidGF6eiIsImVtYWlsIjoidGF6ekBnbWFpbC5jb20iLCJyb2xlcyI6W3siX2lkIjoiNWY1ZTA4N2IyZmFiZDcxY2Q0MDc3Njc4IiwibmFtZSI6InVzZXIifV0sImlhdCI6MTYwMDI2MDM0MywiZXhwIjoxNjAwMzQ2NzQzfQ.LblRgXVPN_cK4L12Zk4NgXDacWsNOYWoeUc2Y9JkvMU"
+
+module.exports = {
+    addRecla(req,res) {
+        keys = Object.keys(req.body)
+        if(
+            !keys.includes("reason") ||
+            !keys.includes("zone")  ||
+            keys.length !==5
+        ) 
+        {
+           res.status(422)
+           res.setHeader("Content-Type","application/json")
+           res.json({
+               err: "invalid data"
+           })
+        }
+        else {
+            Recla.create({...req.body})
+            .then(doc => {
+                res.status(201)
+                res.json({
+                    success : true,
+                    status : doc
+                })
+            })
+            .catch(err => {
+                res.json({err: err.message})
+            })
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*exports.addRecla = async (req,res) => {
    const productId = "5f621a585849670d8789f0f9"

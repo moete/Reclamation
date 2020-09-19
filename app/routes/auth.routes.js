@@ -169,10 +169,13 @@ module.exports = function(app) {
        (req, res, next) => {
         User.register(
         new User({
-          username: req.body.username,
-          email: req.body.email,
+           cin : req.body.cin ,
+           name : req.body.name,
+           email: req.body.email,
+           area : req.body.area,
+           phone : req.body.phone
         }),
-        req.body.password,
+         req.body.password,
         
         (err, user) => {
           if (err) {
@@ -187,7 +190,41 @@ module.exports = function(app) {
             res.statusCode = 403;
             res.setHeader("Content-Type", "application/json");
             res.json({ err: { message: message } });
-          } else {
+          }
+          if (req.body.roles) {
+         
+                Role.find(
+                  {
+                    name: { $in: req.body.roles }
+                  },
+                  (err, roles) => {
+                    if (err) {
+                      res.status(500).send({ message: err });
+                      return;
+                    }
+          
+                    user.roles = roles.map(role => role._id);
+                    user.save(err => {
+                      if (err) {
+                        res.status(500).send({ message: err });
+                        return;
+                      }
+          
+                      res.send({ message: "User was registered successfully!" });
+                    });
+                  }
+
+
+
+
+                )             
+          
+          
+          
+          
+          }
+          else {
+            
             passport.authenticate("local")(req, res, () => {
               res.statusCode = 200;
               res.setHeader("Content-Type", "application/json");
@@ -208,7 +245,7 @@ module.exports = function(app) {
       }
       if (!user) {
         res.statusCode = 403;
-        return res.send({ err: { message: "username or password are incorrect!" } });
+        return res.send({ err: { message: "cin or password are incorrect!" } });
       }
       req.login(user, loginErr => {
         if (loginErr) {

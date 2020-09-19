@@ -1,21 +1,18 @@
-const db = require("../models");
-const Product = db.product ;
-exports.create = (req, res) => {
+
+const Product = require("../models/Product")
+exports.create = (req, res,next) => {
     // Validate request
-    if (!req.body.ProdRef) {
-      res.status(400).send({ message: "Content can not be empty!" });
-      return;
-    }
- const product = new Product ({
-    ProdRef : req.body.ProdRef, 
+  
+ let product = new Product ({
+   
     ProdName: req.body.ProdName,
     ProdType: req.body.ProdType,
     ProdDesc: req.body.ProdDesc,
-    ProdImg:  req.body.ProdImg
 
  })
+ console.log(product)
  product
-    .save(product)
+    .save()
     .then(data => {
       res.send(data);
     })

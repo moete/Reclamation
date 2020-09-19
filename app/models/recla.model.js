@@ -12,7 +12,7 @@ const Recla = mongoose.model(
             type  : Date,
             default  : Date.now
                     },
-        ReclaDesc :{
+        reason :{
             type : String,
             required : true
                    },
@@ -25,11 +25,6 @@ const Recla = mongoose.model(
             type : Boolean ,
             default: false
                   },
-        Area : {
-            type: String,
-            required: true
-               },
-               
         state: {
             type: Number,
             default: 1
