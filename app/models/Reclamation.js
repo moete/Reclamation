@@ -1,8 +1,7 @@
 const mongoose = require("mongoose")
 
-const Recla = mongoose.model(
-    "Recla",
-    new mongoose.Schema(
+const Reclamation = mongoose.Schema(
+    
         {
         UserId : {
             type : mongoose.Schema.Types.ObjectId,
@@ -16,6 +15,7 @@ const Recla = mongoose.model(
             type : String,
             required : true
                    },
+        where : String ,
         products : { 
         type : mongoose.Schema.Types.ObjectId,
         ref: "Prod" 
@@ -33,5 +33,5 @@ const Recla = mongoose.model(
 
         
     )
-)
-module.exports = Recla
+
+module.exports = mongoose.model("Recla", Reclamation)

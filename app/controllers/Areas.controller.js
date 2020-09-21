@@ -2,7 +2,7 @@ const express = require("express")
 const app = express();
 const mongoose = require("mongoose");
 const Area = require("../models/Areas")
-const Recla = require("../models/recla.model");
+const Recla = require("../models/Reclamation");
 const webpush = require("web-push");
 
 

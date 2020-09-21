@@ -5,9 +5,9 @@ const db = {};
 
 db.mongoose = mongoose;
 db.user = require("./User");
-db.role = require("./role.model");
+db.role = require("./Role");
 db.product = require("./Product");
-db.recla = require("./recla.model");
+db.recla = require("./Reclamation");
 db.resetpassword = require("./resetPassword")
 db.ROLES = ["user", "admin", "moderator"];
 
